@@ -10,6 +10,7 @@ const Test = () => {
   const [ok, setOk] = useState<number[]>([]);
   const [end, setEnd] = useState(false);
   const [spinner, setSpinner] = useState(true);
+  const [changeSpinner, setChangeSpinner] = useState(false);
 
   function getRndInteger(min: number, max: number) {
     let nu = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -30,16 +31,16 @@ const Test = () => {
   }
 
   useEffect(() => {
-    console.log(ch);
     const test = getRndInteger(1, 89);
     setN(test);
   }, [ch]);
 
   useEffect(() => {
+    setSpinner(true);
     setTimeout(() => {
       setSpinner(false);
     }, 1000);
-  }, []);
+  }, [changeSpinner]);
 
   if (end) {
     return (
@@ -54,6 +55,7 @@ const Test = () => {
           <button
             onClick={() => {
               setEnd(false);
+              setChangeSpinner(!changeSpinner);
               setCh(0);
               setOk([]);
             }}
