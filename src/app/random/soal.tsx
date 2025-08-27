@@ -12,6 +12,7 @@ const Soal = ({ p, children, id }: ISoal) => {
   const [doc, setdoc] = useState<any>("");
   const [gozine, setGozine] = useState<any>("");
   const [pasokh, setPashokh] = useState<any>("");
+  const [clickPasokh, setClickPasokh] = useState(false);
 
   function getRndInteger(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -61,14 +62,18 @@ const Soal = ({ p, children, id }: ISoal) => {
           <p className="mb-0.5">ج) {doc && doc[gozine[2]].innerText}</p>
           <p className="mb-0.5">د) {doc && doc[gozine[3]].innerText}</p>
         </div>
-        <div className="flex flex-row-reverse justify-center items-center pt-1 mb-3 group transition-all duration-300 ">
-          <button className=" bg-violet-600 px-3 py-1 rounded-lg lg:text-2xl text-xl focus:bg-violet-400 transition-all duration-300">
+        <div className="flex flex-row-reverse justify-center items-center pt-1 mb-3 transition-all duration-300 ">
+          <button
+            onClick={() => setClickPasokh((curr) => !curr)}
+            className={`px-3 py-1 rounded-lg lg:text-2xl text-xl ${
+              clickPasokh ? "bg-violet-400" : "bg-violet-600"
+            } transition-all duration-300`}
+          >
             پاسخ صحیح
           </button>
           <span
-            className={`h-0 overflow-hidden mr-5 lg:text-2xl text-xl font-bold bg-teal-500 pr-2 pl-1.5 rounded-lg 
-            transition-all duration-300 lg:group-focus-within:h-[37px] group-focus-within:h-[30px] flex
-            `}
+            className={`overflow-hidden mr-5 lg:text-2xl text-xl font-bold bg-teal-500 pr-2 pl-1.5 rounded-lg 
+            transition-all duration-300 flex ${clickPasokh ? "lg:h-[37px] h-[30px]" : "h-0 "}`}
           >
             <span className="pt-1">{pasokh === 0 && "الف"}</span>
             <span>{pasokh === 1 && "ب"}</span>
