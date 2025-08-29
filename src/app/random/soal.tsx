@@ -14,10 +14,6 @@ const Soal = ({ p, children, id }: ISoal) => {
   const [pasokh, setPashokh] = useState<any>("");
   const [clickPasokh, setClickPasokh] = useState(false);
 
-  function getRndInteger(min: number, max: number) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-
   useEffect(() => {
     const soal = document.getElementById(`soal${id}`)?.childNodes;
     setdoc(soal);
