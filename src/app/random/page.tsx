@@ -390,7 +390,7 @@ const Test = () => {
               </Soal>
             </Te>
             <Te ch={ch} id={25} n={n} setCh={setCh}>
-              <Soal id={25} p="د">
+              <Soal id={25} p="ج">
                 <div id="soal25">
                   <span>
                     ۲۵- در درمان ملاسما یا ماسک حاملگی پماد جایگزین هیدروکوئینون در مواقعی که فرد
